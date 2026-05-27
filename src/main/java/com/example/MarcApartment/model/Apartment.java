@@ -46,19 +46,19 @@ public class Apartment {
     
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "owner_id") 
-    @JsonIgnoreProperties({"contracts", "qtyDaysAsOwner", "registrationDate", "isActive", "isBusiness", "idLegalOwner"}) 
+    @JsonIgnoreProperties({"contracts", "hibernateLazyInitializer", "handler"}) 
     private Owner owner;
 
     @OneToMany(mappedBy="apartment", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER) 
     @JsonIgnoreProperties("apartment") 
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy="apartment", cascade=CascadeType.ALL, orphanRemoval=true) 
+    @OneToMany(mappedBy="apartment", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER) 
     @JsonIgnoreProperties("apartment") 
     private List<PropertyContract> propertyContracts = new ArrayList<>();
 
     // NOVA LLISTA DE REFORMES
-    @OneToMany(mappedBy="apartment", cascade=CascadeType.ALL, orphanRemoval=true) 
+    @OneToMany(mappedBy="apartment", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER) 
     @JsonIgnoreProperties("apartment") 
     private List<Renovation> renovations = new ArrayList<>();
 

@@ -1,6 +1,6 @@
 package com.example.MarcApartment.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class Owner extends Person {
     @Column(name = "qty_days_owner")private Integer qtyDaysAsOwner; 
    
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonManagedReference(value = "owner-contract")
+    @JsonIgnoreProperties("owner")
     private List<PropertyContract> contracts = new ArrayList<>();
 
     public Owner() {super();}

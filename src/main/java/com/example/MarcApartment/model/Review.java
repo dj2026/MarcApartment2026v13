@@ -15,7 +15,7 @@ public class Review {
     private Integer rating; private LocalDate date;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST}) @JoinColumn(name = "reviewer_id") @JsonIgnoreProperties({"reviews", "hibernateLazyInitializer", "handler"})  private Reviewer reviewer;
-    @ManyToOne(fetch = FetchType.EAGER) @JoinColumn(name = "apartment_id")  @JsonIgnoreProperties("reviews")  private Apartment apartment;
+    @ManyToOne(fetch = FetchType.EAGER) @JoinColumn(name = "apartment_id")  @JsonIgnoreProperties({"reviews", "propertyContracts", "renovations", "hibernateLazyInitializer", "handler"})  private Apartment apartment;
     public Review() {}
     
     public Long getId() {return id;} public void setId(Long id) {this.id = id;}

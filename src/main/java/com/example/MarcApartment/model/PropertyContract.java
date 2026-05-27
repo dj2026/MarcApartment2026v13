@@ -1,6 +1,6 @@
 package com.example.MarcApartment.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete; 
 import org.hibernate.annotations.OnDeleteAction;
@@ -13,11 +13,11 @@ public class PropertyContract {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH}) 
-    @JoinColumn(name = "owner_id")  @JsonBackReference(value = "owner-contract")
+    @JoinColumn(name = "owner_id") @JsonIgnoreProperties({"contracts", "hibernateLazyInitializer", "handler"})
     @OnDelete(action = OnDeleteAction.CASCADE) private Owner owner;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH}) 
-    @JoinColumn(name = "apartment_id") @JsonBackReference(value = "apartment-contract")
+    @JoinColumn(name = "apartment_id") @JsonIgnoreProperties({"propertyContracts", "renovations", "hibernateLazyInitializer", "handler"})
     @OnDelete(action = OnDeleteAction.CASCADE) private Apartment apartment;
 
     @Column(name = "contract_details") private String contractDetails; 

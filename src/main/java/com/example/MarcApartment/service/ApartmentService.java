@@ -21,19 +21,25 @@ public class ApartmentService {
     @Autowired private EntityManager em;
     @Autowired private RenovationRepository renovationRepo;
 
+    @Transactional(readOnly = true)
     public Apartment findById(Long id) {return aptRepo.findById(id).orElse(null);}
 
+    @Transactional(readOnly = true)
     public List<Apartment> filterApartments(Long minPrice, Integer minParking, Integer minArea, Integer minSchools, Integer minReviews, String reviewText, String reviewerName) {
         Specification<Apartment> spec = ApartmentSpecification.filterBy(minPrice, minParking, minArea, minSchools, minReviews, reviewText, reviewerName);
         return aptRepo.findAll(spec);
     }
 
+    @Transactional(readOnly = true)
     public Page<Apartment> findByTypePaginated(String type, Pageable pageable) {
         if (type == null || type.trim().isEmpty()) { return aptRepo.findAll(pageable);}
         return aptRepo.findByPropertyTypeContainingIgnoreCase(type, pageable);
     }
 
+    @Transactional(readOnly = true)
     public List<Apartment> findAll() {return aptRepo.findAll();}
+
+    @Transactional(readOnly = true)
     public List<Apartment> findAllWithSchools() {return aptRepo.findAllWithSchools();}
 
     @Transactional 

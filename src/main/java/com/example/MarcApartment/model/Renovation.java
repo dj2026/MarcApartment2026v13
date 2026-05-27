@@ -1,7 +1,7 @@
 package com.example.MarcApartment.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "renovations")
@@ -17,9 +17,9 @@ public class Renovation {
     private String description;
     private String category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "apartment_id")
-    @JsonBackReference 
+    @JsonIgnoreProperties({"renovations", "propertyContracts", "hibernateLazyInitializer", "handler"})
     private Apartment apartment;
 
     public Renovation() {}
