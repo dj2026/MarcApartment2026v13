@@ -1,0 +1,115 @@
+{
+  "info": {
+    "_postman_id": "ca853d89-8c41-4506-818b-0e79e7eb7373",
+    "name": "ApartmentPredictor Backend 2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51389689",
+    "_collection_link": "https://go.postman.co/collection/51389689-ca853d89-8c41-4506-818b-0e79e7eb7373?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "populate owners",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/populate/owners",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "populate",
+            "owners"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "populate create duplex",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"propertyType\": \"Duplex\",\r\n    \"price\": 0,\r\n    \"area\": 150,\r\n    \"bedrooms\": 3,\r\n    \"bathrooms\": 2,\r\n    \"stories\": 2,\r\n    \"parking\": 1,\r\n    \"mainroad\": \"yes\",\r\n    \"guestroom\": \"no\",\r\n    \"basement\": \"no\",\r\n    \"hotwaterheating\": \"yes\",\r\n    \"airconditioning\": \"yes\",\r\n    \"terrace\": \"yes\",\r\n    \"prefarea\": \"yes\",\r\n    \"furnishingstatus\": \"furnished\",\r\n    \"description\": \"El meu duplex i la meva casa gestionats des de Postman 2026\",\r\n    \"staticReview\": \"Espectacular!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/populate/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "populate",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update apartment",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"propertyType\": \"Duplex Reformat\",\r\n    \"description\": \"Actualització de prova sense errors\",\r\n    \"area\": 1200,\r\n    \"bedrooms\": 3,\r\n    \"bathrooms\": 3,\r\n    \"stories\": 2,\r\n    \"parking\": 1, \r\n    \"mainroad\": \"yes\",\r\n    \"guestroom\": \"no\",\r\n    \"basement\": \"no\",\r\n    \"hotwaterheating\": \"yes\",\r\n    \"airconditioning\": \"no\",\r\n    \"prefarea\": \"yes\",\r\n    \"furnishingstatus\": \"furnished\",\r\n    \"price\": 1800\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/populate/update/15",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "populate",
+            "update",
+            "15"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete apartment id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/populate/delete/16",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "populate",
+            "delete",
+            "16"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
